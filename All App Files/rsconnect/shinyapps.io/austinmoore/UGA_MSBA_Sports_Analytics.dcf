@@ -1,0 +1,13 @@
+name: UGA_MSBA_Sports_Analytics
+title: UGA_MSBA_Sports_Analytics
+username:
+account: austinmoore
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5940426
+bundleId: 5742082
+url: https://austinmoore.shinyapps.io/UGA_MSBA_Sports_Analytics/
+when: 1648587203.46518
+lastSyncTime: 1648587203.46519
+asMultiple: FALSE
+asStatic: FALSE

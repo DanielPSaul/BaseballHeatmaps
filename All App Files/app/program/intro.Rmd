@@ -1,0 +1,35 @@
+---
+title: "IntroPage"
+author: "Jack Dalmolin"
+date: "9/29/2021"
+output: html_document
+---
+<html>
+
+<style>
+.column {
+  float: left;
+  padding-right: 30px;
+}
+</style>
+<h1><b>UGA Baseball Dashboard Application</b></h1>
+<h3>Getting Started:</h3>
+<h4>Click on a tab above to view data or visualization</h4>
+
+<br>
+  <div class="column">
+    <a href="https://www.facebook.com/GeorgiaBaseball/" target="_blank" title="Facebook">
+    <img src="https://grad.uga.edu/wp-content/uploads/2016/03/sn_facebook.svg" alt="Facebook"></img></a> </li>
+  </div>
+  
+  <div class="column">
+   <a href="https://twitter.com/BaseballUGA" target="_blank" title="Twitter">
+											<img src="https://grad.uga.edu/wp-content/uploads/2016/03/sn_twitter.svg" alt="Twitter">										</a>
+  </div>
+  
+  <div class="column">
+  <a href="https://www.instagram.com/baseballuga/" target="_blank" title="Instagram">
+											<img src="https://grad.uga.edu/wp-content/uploads/2016/03/sn_instagram.svg" alt="Instagram">										</a>
+    </div>
+  
+</html>

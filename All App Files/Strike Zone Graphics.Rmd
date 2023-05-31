@@ -1,0 +1,81 @@
+---
+title: "K zone attempt"
+author: "Jack Dalmolin"
+date: "10/1/2021"
+output: html_document
+---
+```{r}
+
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(readr)
+install.packages("ggrepel")
+library(ggrepel)
+data <- read_csv("Database/Sample TrackMan Game File.csv")
+View(data)
+
+
+```
+
+## Create K Zone 
+```{r}
+x <- c(-.95,.95,.95,-.95,-.95)
+z <- c(1.6,1.6,3.5,3.5,1.6)
+
+#store in dataframe
+sz <- data_frame(x,z) 
+```
+## Strike Zone with Pitch Location
+```{r}
+ggplot() +
+  geom_path(data = sz, aes(x=x, y=z)) +
+  coord_equal() +
+  xlab("feet from home plate") +
+  ylab("feet above the ground") +
+  geom_point(data = data ,aes(x = data$PlateLocSide, y = data$PlateLocHeight, group = data$Pitcher)) +
+  scale_size(range = c(0.01,3))
+```
+
+# label for batter side, potential input
+```{r}
+
+stand_xcoord <- data$BatterSide
+
+#Initialize
+stand_xcoord[which(stand_xcoord=='Left')] <- 1.5
+stand_xcoord[which(stand_xcoord=='Right')] <- -1.5
+
+#change to numeric
+stand_xcoord <- as.numeric(stand_xcoord)
+
+#Create new column in dataframe
+data$stand_xcoord <- stand_xcoord
+
+```
+
+
+```{r}
+for(i in unique(data$Pitcher)){
+
+    
+    #create atbat dataframe
+    kzone <- data %>%
+      filter(data$Pitcher == i)
+    
+    plot2 <- ggplot() +
+      geom_path(data = sz, aes(x=x, y=z)) + 
+      coord_equal() + 
+      xlab("feet from center of home plate") +
+      ylab("feet above the ground") +
+      geom_point(data = kzone, aes(x = kzone$PlateLocSide, y = kzone$PlateLocHeight, color = TaggedPitchType)) +
+      # geom_text_repel(aes(label = kzone$PitchCall, x = kzone$PlateLocSide, y = kzone$PlateLocHeight), size = 2.3, fontface = 2) +
+      theme_dark() 
+    print(plot2)
+    
+}
+    
+
+```
+
+
